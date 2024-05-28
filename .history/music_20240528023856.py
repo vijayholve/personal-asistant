@@ -1,0 +1,41 @@
+import pygame
+import os
+import random
+import speech_recognition as sr
+
+directory = 'C:/Users/Vijay/Pictures/MERN_VIJAY/09. HTML (Level - 3)'
+print(directory)
+# Get a list of all files in the directory
+files = glob.glob(os.path.join(directory, '*'))
+
+# Loop through and process each file
+file=random.choice(files)
+print(file)
+# music_file = "C:/Users/Rayat/Downloads/pepperfry/vijay_proj/a.mp3"
+def play_music(music):
+    pygame.mixer.init()
+    pygame.mixer.music.load(f"C:\\Users\\Vijay\\Pictures\\MERN_VIJAY\\0{music}. HTML (Level 1) - Part B.mp3")
+    
+    pygame.mixer.music.play()
+    while pygame.mixer.music.get_busy():
+            pygame.time.Clock().tick(10)
+            query=input("change/pause :")
+            if "pause" in query:
+                        pygame.mixer.music.pause()
+                        
+            elif "change" in query:
+                        pygame.mixer.music.pause()
+                        rand2=random.choice(arr)
+                        play_music(rand2)
+            else:
+                        print("nothing")
+
+def music_main():
+    
+    rand=random.choice(arr)
+
+    play_music(rand)
+
+    pygame.quit()
+    
+music_main()
