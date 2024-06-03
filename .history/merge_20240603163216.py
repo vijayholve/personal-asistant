@@ -10,7 +10,7 @@ from whatsapp import open_whatsapp
 recognizer = sr.Recognizer()
 
 def take():
-    mic = sr.Microphone(sample_rate=48000, chunk_size=2048)
+     mic = sr.Microphone(sample_rate=48000, chunk_size=2048)
     with mic as source:
         listening_duration=3
         audio = None
@@ -18,7 +18,7 @@ def take():
         # while (time.time() - start_time) < listening_duration:
         try:
             # Adjust for ambient noise (optional)
-            recognizer.adjust_for_ambient_noise(source,duration=3)  # Adjust duration as needed
+            recognizer.adjust_for_ambient_noise(source)  # Adjust duration as needed
 
             print("Speak now...")
             audio = recognizer.listen(source, timeout=3, phrase_time_limit=5)
@@ -32,7 +32,7 @@ def take():
         if audio is None:
             print("please say something ")
         try:
-            text = recognizer.recognize_google(audio, language="en-IN")
+            text = recognizer.recognize_google(audio)
             print("You said:", text)
             return text.lower()
         except sr.UnknownValueError:

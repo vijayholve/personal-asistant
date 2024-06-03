@@ -32,7 +32,7 @@ def take():
         if audio is None:
             print("please say something ")
         try:
-            text = recognizer.recognize_google(audio, language="en-IN")
+            text = recognizer.recognize_google(audio)
             print("You said:", text)
             return text.lower()
         except sr.UnknownValueError:

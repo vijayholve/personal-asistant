@@ -10,18 +10,17 @@ from whatsapp import open_whatsapp
 recognizer = sr.Recognizer()
 
 def take():
-    mic = sr.Microphone(sample_rate=48000, chunk_size=2048)
-    with mic as source:
+    with sr.Microphone() as source:
         listening_duration=3
         audio = None
         start_time = time.time()
         # while (time.time() - start_time) < listening_duration:
         try:
             # Adjust for ambient noise (optional)
-            recognizer.adjust_for_ambient_noise(source,duration=3)  # Adjust duration as needed
+            recognizer.adjust_for_ambient_noise(source, phrase_time_limit=5)  # Adjust duration as needed
 
             print("Speak now...")
-            audio = recognizer.listen(source, timeout=3, phrase_time_limit=5)
+            audio = recognizer.listen(source,timeout=2)
         except sr.UnknownValueError:
             print("Could not understand audio. Please try again.")
             return None
@@ -32,7 +31,7 @@ def take():
         if audio is None:
             print("please say something ")
         try:
-            text = recognizer.recognize_google(audio, language="en-IN")
+            text = recognizer.recognize_google(audio)
             print("You said:", text)
             return text.lower()
         except sr.UnknownValueError:
@@ -91,7 +90,7 @@ while True:
         elif "stop" or "exit" in text:
             #out of loop
             break
-        elif "hack" in text_list.lower():
+        elif "hack" in text.lower():
             #using pyauto gui
             hack_in_process()
         # elif "weather" in text:
