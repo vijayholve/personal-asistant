@@ -1,0 +1,80 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700&display=swap');
+
+/* Universal Properties */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Roboto', sans-serif;
+  user-select: none;
+}
+
+body {
+  display: flex;
+  justify-content: center; /* Horizontally center */
+  align-items: center;
+  height: 100vh;
+  background-color: #0515f0;
+  overflow: hidden;
+}
+
+/* Circle Animation */
+.circle {
+  width: 200px;
+  height: 200px;
+  background: radial-gradient(circle, #153acb, #0f0f52);
+  border-radius: 50%;
+  position: relative;
+  box-shadow: 0 10px 20px rgba(135, 206, 235, 0.2), inset 0 -10px 20px rgba(135, 206, 235, 0.1);
+  animation: pulse 2s infinite;
+}
+#innercircle_id{
+  box-shadow: 200cm 0 40px rgba(20, 165, 165,0.4), inset 0 -10px 20px rgba(5, 5, 255, 0.1);
+  background-color: #1100ff;
+        }
+
+#innercircle_id2{
+  box-shadow: 0 0 40px rgba(20, 165, 165,0.4), inset 0 -10px 20px rgba(5, 5, 255, 0.1);
+  background-color: #1100ff;
+  
+}
+
+.innercircle {
+  width: 180px;
+  height: 180px;
+  background: radial-gradient(circle, #0033ff, #000099);
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  box-shadow: 0 10px 20px rgb(33, 17, 151), inset 0 -10px 20px rgba(255, 255, 255, 0.1);
+  transition: box-shadow 0.3s ease;
+}
+
+.innercircle:hover {
+  box-shadow: 0 0 40px rgba(20, 165, 165, 0.4), inset 0 -10px 20px rgba(5, 5, 255, 0.1);
+  background-color: #1100ff;
+}
+
+.innermost-circle {
+  width: 120px;
+  height: 120px;
+  background: radial-gradient(circle, #0033ff, #000099);
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2), inset 0 -10px 20px rgba(255, 255, 255, 0.1);
+}
+
+/* Animations */
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+}

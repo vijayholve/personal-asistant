@@ -1,0 +1,33 @@
+<body>
+    <div>
+        <form method="POST" enctype="multipart/form-data" action="">
+            <input type="file" name="excel_file">
+            <input type="submit" name="submit" value="Submit">
+            {% csrf_token %}
+        </form>
+
+         <div>
+            
+         </div>
+
+        <div>
+            <table border="1">
+                <tr>
+                    <th>Name</th>
+                    <th>Phone</th>
+                </tr>
+                
+                {% for person in persons  %}
+                    <tr>
+                        <td>{{person.name}}</td>
+                        <td>{{person.phone_no}}</td>
+                        <select name="y es" id=""></select>
+                    </tr>
+                {% endfor %}
+                    
+                
+
+            </table>
+        </div>
+    </div>
+</body>
