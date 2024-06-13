@@ -1,0 +1,7 @@
+django
+pandas 
+pyttsx3
+pygame
+pyautogui
+SpeechRecognition
+django
