@@ -1,0 +1,40 @@
+<!-- assistant/templates/assistant/index.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Voice Assistant</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <h1>Voice Assistant</h1>
+    <form id="audio-form" enctype="multipart/form-data">
+        <label for="audio_file">Upload Audio File:</label>
+        <input type="file" id="audio_file" name="audio_data">
+        <button type="submit">Submit</button>
+    </form>
+    <div id="output"></div>
+
+    <script>
+    $(document).ready(function() {
+        $('#audio-form').submit(function(event) {
+            event.preventDefault();
+            var formData = new FormData(this);
+            $.ajax({
+                url: '{% url "process_audio" %}',
+                type: 'POST',
+                data: formData,
+                processData: false,
+                contentType: false,
+                success: function(response) {
+                    console.log('Response:', response.response);
+                    $('#output').text(response.response);
+                },
+                error: function(error) {
+                    console.error('Error:', error);
+                }
+            });
+        });
+    });
+    </script>
+</body>
+</html>

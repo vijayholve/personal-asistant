@@ -1,0 +1,94 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700&display=swap');
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Roboto', sans-serif;
+  user-select: none;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #0515f0;
+  overflow: hidden;
+}
+
+#status {
+  margin-top: 20px;
+  color: white;
+  font-size: 24px;
+}
+
+button {
+  margin-top: 20px;
+  padding: 10px 20px;
+  font-size: 18px;
+  border: none;
+  background-color: #ff4747;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #ff1f1f;
+}
+
+.circle {
+  width: 200px;
+  height: 200px;
+  background: radial-gradient(circle, #153acb, #0f0f52);
+  border-radius: 50%;
+  position: relative;
+  box-shadow: 0 10px 20px rgba(135, 206, 235, 0.2), inset 0 -10px 20px rgba(135, 206, 235, 0.1);
+}
+
+.innercircle {
+  width: 180px;
+  height: 180px;
+  background: radial-gradient(circle, #0033ff, #000099);
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  box-shadow: 0 10px 20px rgb(33, 17, 151), inset 0 -10px 20px rgba(255, 255, 255, 0.1);
+  transition: all 0.3s ease;
+}
+
+ .jelly {
+  animation: jelly 0.6s s;
+}
+
+.innermost-circle {
+  width: 120px;
+  height: 120px;
+  background: radial-gradient(circle, #0033ff, #000099);
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2), inset 0 -10px 20px rgba(255, 255, 255, 0.1);
+}
+
+@keyframes jelly {
+  0%, 100% {
+    transform: translate(-50%, -50%) scale(1);
+  }
+  25% {
+    transform: translate(-50%, -50%) scale(1.2, 0.8);
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(0.8, 1.2);
+  }
+  75% {
+    transform: translate(-50%, -50%) scale(1.1, 0.9);
+  }
+}

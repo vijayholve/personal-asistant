@@ -1,0 +1,50 @@
+<!-- assistant/templates/assistant/index.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Voice Assistant</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <h1>Voice Assistant</h1>
+    <button id="start-btn">Start Listening</button>
+    <div id="output"></div>
+
+    <script>
+    $(document).ready(function() {
+        $('#start-btn').click(function() {
+            var recognition = new webkitSpeechRecognition();
+            recognition.continuous = false;
+            recognition.lang = 'en-IN';
+            recognition.interimResults = false;
+
+            recognition.onresult = function(event) {
+                var result = event.results[0][0].transcript;
+                $('#output').text(result);
+
+                $.ajax({
+                    url: '{% url "process_audio" %}',
+                    : 'POST',
+                    data: { 'audio_data': result },
+                    success: function(response) {
+                        console.log('Response:', response.response);
+                        if (response.response === 'exit') {
+                            recognition.stop();
+                        }
+                    },
+                    error: function(error) {
+                        console.error('Error:', error);
+                    }
+                });
+            };
+
+            recognition.onerror = function(event) {
+                console.error('Recognition error:', event.error);
+            };
+
+            recognition.start();
+        });
+    });
+    </script>
+</body>
+</html>
